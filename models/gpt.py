@@ -37,7 +37,7 @@ class Gpt():
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=self.logs,
-                timeout = 20
+                timeout = 10
             )
             # ログに回答を追加
             res_ctx = {"role": "assistant", "content": response.choices[0].message.content}

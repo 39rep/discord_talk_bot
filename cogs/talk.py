@@ -17,20 +17,20 @@ class TalkCog(commands.Cog):
         await self.bot.tree.sync(guild=discord.Object(int(settings.getId())))
         print("[Cogs] TalkCog is ready.")
 
-    @app_commands.hybrid_command(
+    @commands.hybrid_command(
         name="talk",
-        description="アロナとお話ができます。"
+        # description="アロナとお話ができます。"
     )
     @app_commands.guilds(int(settings.getId()))
-    async def ask(self, ctx:discord.Interaction, text: str):
-        await ctx.response.defer()
+    async def talk(self, ctx:commands.Context, text: str):
+        await ctx.defer()
         try:
             message = arona_gpt.completion(text)
         except Exception as e:
             message = "回答が見つからなかったか、内部でエラーが発生した可能性があります。"
             print(e)
-        embed=discord.Embed(title=text, description=message, color=0x39C7EC)
-        await ctx.followup.send(embed=embed)
+        # embed=discord.Embed(title=text, description=message, color=0x39C7EC)
+        await ctx.send(message)
         
 async def setup(bot: commands.Bot):
     await bot.add_cog(TalkCog(bot))
