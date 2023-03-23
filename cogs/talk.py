@@ -17,7 +17,7 @@ class TalkCog(commands.Cog):
         await self.bot.tree.sync(guild=discord.Object(int(settings.getId())))
         print("[Cogs] TalkCog is ready.")
 
-    @app_commands.command(
+    @app_commands.hybrid_command(
         name="talk",
         description="アロナとお話ができます。"
     )
