@@ -13,11 +13,26 @@ class Gpt():
         self.character_settings = arona_setting
         self.logs = []
 
+
+    def print_logs(self):
+        print('--- 現在までの会話ログ')
+        if not len(self.logs):
+            print('None')
+            return
+        
+        for log in self.logs[1:]:
+            role = log.get('role')
+            context = log.get('content')
+            print(f'role: {role}\t, content: {context}')
+
     def completion(self, msg: str):
         # 会話ログのリセット
         if msg == 'reset':
             self.response = '今までの会話の記憶を消去しました！'
             self.logs.clear()
+
+            # ログを整形後表示
+            self.print_logs()
             return self.response
         
         # 事前設定の適用
@@ -31,7 +46,6 @@ class Gpt():
         self.logs.append(new_message)
 
         # API呼び出し
-        print(f'ログ：\n{self.logs}')
         print('OpenAIのAPIを呼び出します。')
         try:
             response = openai.ChatCompletion.create(
@@ -43,9 +57,11 @@ class Gpt():
             res_ctx = {"role": "assistant", "content": response.choices[0].message.content}
             self.logs.append(res_ctx)
 
-            # 回答と過去ログを表示
+            # 回答と過去ログを整形後表示
             response_text = response.choices[0].message.content
-            print(f'回答: {response_text}\n過去の会話: {self.logs}')
+            print(f'回答: {response_text}')
+            # ログを整形後表示
+            self.print_logs()
         except Exception as e:
             # タイムアウトのとき
             response_text = 'error: API呼び出しがタイムアウトしました。'
