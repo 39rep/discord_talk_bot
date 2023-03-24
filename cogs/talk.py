@@ -23,14 +23,17 @@ class TalkCog(commands.Cog):
     )
     @app_commands.guilds(int(settings.getId()))
     async def talk(self, ctx:commands.Context, text: str):
-        await ctx.defer()
-        try:
-            message = arona_gpt.completion(text)
-        except Exception as e:
-            message = "回答が見つからなかったか、内部でエラーが発生した可能性があります。"
-            print(e)
-        # embed=discord.Embed(title=text, description=message, color=0x39C7EC)
-        await ctx.send(message)
+        if ctx.channel.name == 'talk-with-arona':
+            await ctx.defer()
+            try:
+                message = arona_gpt.completion(text)
+            except Exception as e:
+                message = "回答が見つからなかったか、内部でエラーが発生した可能性があります。"
+                print(e)
+            # embed=discord.Embed(title=text, description=message, color=0x39C7EC)
+            await ctx.send(message)
+        else:
+            await ctx.send('指定されたチャンネル名と一致しません。')
         
 async def setup(bot: commands.Bot):
     await bot.add_cog(TalkCog(bot))
