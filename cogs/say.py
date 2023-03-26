@@ -21,7 +21,7 @@ class SayCog(commands.Cog):
     )
     @app_commands.guilds(int(settings.getId()))
     async def ping(self, ctx:commands.Context, text: str):
-        ctx.send('pong')
+        await ctx.send('pong')
         
 async def setup(bot: commands.Bot):
     await bot.add_cog(SayCog(bot))
