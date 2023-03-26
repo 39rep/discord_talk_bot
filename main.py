@@ -10,6 +10,7 @@ intents.message_content = True
 
 INITAL_EXTENSIONS = [
     "cogs.talk",
+    "cogs.say",
 ]
 
 class MyBot(commands.Bot):
