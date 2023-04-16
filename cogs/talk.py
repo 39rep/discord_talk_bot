@@ -21,7 +21,7 @@ class TalkCog(commands.Cog):
         name="talk",
         # description="アロナとお話ができます。"
     )
-    @app_commands.guilds(int(settings.getId()))
+    # @app_commands.guilds(int(settings.getId()))
     async def talk(self, ctx:commands.Context, text: str):
         if ctx.channel.name == 'talk-with-arona':
             await ctx.defer()

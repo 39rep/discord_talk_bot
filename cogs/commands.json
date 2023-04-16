@@ -1,0 +1,37 @@
+{
+    "help": {
+        "name": "help",
+        "aliases": ["h", "?"],
+        "usage": "コマンド一覧, 使い方"
+    },
+    "join": {
+        "name": "join",
+        "aliases": ["j", "connect"],
+        "usage": "ボイスチャンネルに参加する"
+    },
+    "play": {
+        "name": "play",
+        "aliases": ["p"],
+        "usage": "音楽を再生する"
+    },
+    "pause": {
+        "name": "pause",
+        "aliases": [],
+        "usage": "音楽を一時停止する"
+    },
+    "resume": {
+        "name": "resume",
+        "aliases": ["r"],
+        "usage": "一時停止した音楽を再生する"
+    },
+    "stop": {
+        "name": "stop",
+        "aliases": ["s"],
+        "usage": "再生をやめる"
+    },
+    "leave": {
+        "name": "leave",
+        "aliases": ["l"],
+        "usage": "ボイスチャンネルから退出する"
+    }
+}
