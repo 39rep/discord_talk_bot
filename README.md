@@ -1,2 +1,3 @@
 # discord_talk_bot
 discord.pyとgpt3.5turboを用いて設定したキャラクターと話すことが出来るbot。
+現在キャラクターの設定はブルアカのアロナ。
