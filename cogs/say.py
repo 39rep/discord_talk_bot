@@ -16,7 +16,7 @@ class SayCog(commands.Cog):
         print("[Cogs] SayCog is ready.")
 
     @commands.hybrid_command(name="ping",)
-    # @app_commands.guilds(int(settings.getId()))
+    @app_commands.guilds(int(settings.getId()))
     async def ping(self, ctx:commands.Context, text: str):
         await ctx.send('pong')
         
